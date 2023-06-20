@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/maypaybuttonLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ripple"
+        android:drawableLeft="@drawable/logo_ic_single_white"
+        android:letterSpacing="0.07"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:shadowColor="#00000029"
+        android:shadowDx="15"
+        android:shadowDy="0"
+        android:shadowRadius="40"
+        android:text="@string/payWithMaypayButtonText"
+        android:textAlignment="textEnd"
+        android:textAppearance="?android:textAppearance"
+        android:textColor="#FFFFFF"
+        android:includeFontPadding="false"
+        android:gravity="center_vertical|center_horizontal"
+        android:fontFamily="@font/giorgio"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:clickable="true"
+        />
+</LinearLayout>

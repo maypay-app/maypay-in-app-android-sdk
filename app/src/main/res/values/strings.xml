@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">android_sdk_sample</string>
+    <string name="payWithMaypayCustom">Pay with Maypay Custom</string>
+</resources>

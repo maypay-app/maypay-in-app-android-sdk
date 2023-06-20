@@ -1,1 +1,1 @@
-"# maypay-in-app-android-sdk" 
+# maypay-in-app-android-sdk
