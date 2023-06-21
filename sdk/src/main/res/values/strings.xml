@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="payWithMaypayButtonText">Vinci o paga</string>
+    <string name="firstPhrase">E se fosse gratis?</string>
+    <string name="secondPhrase">Maypay è l\'app per vincere</string>
+    <string name="thirdPhrase">ciò che stai acquistando.</string>
+    <string name="amountHeader">Totale</string>
+    <string name="maypay_logo">maypay_logo</string>
 </resources>
