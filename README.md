@@ -87,6 +87,15 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
+Use `setPaymentRequestId(paymentRequestId: String)` to provide buttons with payment request ID
+
+> **CAUTION**: `setPaymentRequestId` throws a IllegalArgumentException if `paymentRequestId` is `null` or empty
+
+
+Use `setAmount(amount: String)` to provide button box with amount value.
+
+> **CAUTION**: `setAmount` throws a IllegalArgumentException if `amount` is `null` or empty
+
 ### Custom Integration
 
 If you want to implement your custom button to handle the Maypay app opening you can use `MaypayIntent.canOpenMaypay` and `MaypayIntent.openMaypay` functions.
