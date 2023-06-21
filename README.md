@@ -2,7 +2,14 @@
 # Maypay
 
 
-An integration for Maypay app opening using deeplinks. It allows to check if the Maypay app in installed on device and open it with a paymentRequestId. It also integrate default Maypay button.
+This library allows you to check whether the maypay app is installed on your mobile device and open it to confirm a payment. 
+The maypay app needs the payment id, so it is necessary to provide the library with the ``paymentRequestId`` received after creating the payment request via the [Maypay API](https://developers.maypay.com/introduction/welcome/). 
+
+To simplify integration, the library has two UI components that manage the opening of the app :
+
+- ![Simple Button]()
+- ![Extended Button]()
+
 
 ## Installation
 The package is stored in the [GitHub Packages Registry](https://github.com/features/packages), which requires credentials to download packages from the repository.
