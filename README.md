@@ -1,15 +1,15 @@
 
-# Maypay
+# Maypay Android SDK
 
 
 This library allows you to check whether the maypay app is installed on your mobile device and open it to confirm a payment. 
 The maypay app needs the payment id, so it is necessary to provide the library with the ``paymentRequestId`` received after creating the payment request via the [Maypay API](https://developers.maypay.com/introduction/welcome/). 
 
 To simplify integration, the library has two UI components that manage the opening of the app :
-
-- ![Simple Button]()
-- ![Extended Button]()
-
+#### `MaypayButton` 
+![Simple Button](https://github.com/maypay-app/maypay-in-app-android-sdk/assets/137157182/f3973f38-937f-4ee5-ae5e-970524918978)
+#### `MaypayButtonBox` 
+![Extended Button](https://github.com/maypay-app/maypay-in-app-android-sdk/assets/137157182/19773c67-029e-4fda-a97c-cec94e82434c)
 
 ## Installation
 The package is stored in the [GitHub Packages Registry](https://github.com/features/packages), which requires credentials to download packages from the repository.
