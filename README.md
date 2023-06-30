@@ -1,15 +1,31 @@
 
 # Maypay Android SDK
 
+## Overview
+This library allows you to check whether the maypay app is installed on your mobile device and open it to confirm a payment.  
+Integration is simplified through the use of the [Maypay Android SDK.](https://github.com/maypay-app/maypay-in-app-android-sdk) that provides default Maypay buttons. 
+Additionally, generic functions are provided to allow integration of Maypay into a fully customized button.
+As an additional option, the procedure for integrating Maypay into your app without using the SDK (not recommended) will be explained.
 
-This library allows you to check whether the maypay app is installed on your mobile device and open it to confirm a payment. 
-The maypay app needs the payment id, so it is necessary to provide the library with the ``paymentRequestId`` received after creating the payment request via the [Maypay API](https://developers.maypay.com/introduction/welcome/). 
+After successful integration, payment in your app via Maypay will follow a flow similar to that in the example below.
 
-To simplify integration, the library has two UI components that manage the opening of the app :
-#### `MaypayButton` 
-![Simple Button](https://github.com/maypay-app/maypay-in-app-android-sdk/assets/137157182/f3973f38-937f-4ee5-ae5e-970524918978)
-#### `MaypayButtonBox` 
-![Extended Button](https://github.com/maypay-app/maypay-in-app-android-sdk/assets/137157182/19773c67-029e-4fda-a97c-cec94e82434c)
+
+![Android app payment flow]()
+
+
+## Prerequisites
+
+:::caution
+The Android minSdk required version is **28**
+:::
+
+### Getting the `requestId`
+To allow the user to complete the payment process for your order, you need to provide Maypay with a valid paymentRequestId.   
+Please refer to the [Payment Flows](https://developers.maypay.com/category/payment-flows) section for details on how to retrieve it.
+
+### Provide a `redirectUrl`
+
+To enable Maypay to reopen your application after payment, when creating the request you must provide the `redirectUrl` which is a [universal link (iOS)](https://developer.apple.com/ios/universal-links/) or an [app link (android)](https://developer.android.com/training/app-links) of your application.
 
 ## Installation
 The package is stored in the [GitHub Packages Registry](https://github.com/features/packages), which requires credentials to download packages from the repository.
@@ -23,15 +39,15 @@ The package is stored in the [GitHub Packages Registry](https://github.com/featu
 In your ```settings.gradle``` add the following repository under ```dependencyResolutionManagement```:
 
 ```gradle
-    repositories {
-        maven {
-            url "https://maven.pkg.github.com/maypay-app/maypay-in-app-android-sdk"
-            credentials {
-                username = "your_username"
-                password = "your_personal_access_token"
-            }
+repositories {
+    maven {
+        url "https://maven.pkg.github.com/maypay-app/maypay-in-app-android-sdk"
+        credentials {
+            username = "your_username"
+            password = "your_personal_access_token"
         }
     }
+}
 ```
 
 Then, in your build.gradle add the following dependecy:
@@ -58,6 +74,7 @@ You can display the default Maypay button by adding the component in your layout
 ```
 
 In your activity you can handle buttons as in the following section: 
+
 ```java
 package com.maypay.android_sdk_sample;
 
@@ -72,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -89,14 +105,17 @@ public class MainActivity extends AppCompatActivity {
 
 Use `setPaymentRequestId(paymentRequestId: String)` to provide buttons with payment request ID
 
-> **CAUTION**: `setPaymentRequestId` throws a IllegalArgumentException if `paymentRequestId` is `null` or empty
-
+:::caution
+ `setPaymentRequestId` throws an IllegalArgumentException if `paymentRequestId` is `null` or empty
+:::
 
 Use `setAmount(amount: String)` to provide button box with amount value.
 
-> **CAUTION**: `setAmount` throws a IllegalArgumentException if `amount` is `null` or empty
+:::caution
+`setAmount` throws an IllegalArgumentException if `amount` is `null` or empty
+:::
 
-### Custom Integration
+### Custom Button
 
 If you want to implement your custom button to handle the Maypay app opening you can use `MaypayIntent.canOpenMaypay` and `MaypayIntent.openMaypay` functions.
 
@@ -124,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -137,5 +155,19 @@ public class MainActivity extends AppCompatActivity {
             MaypayIntent.openMaypay(this, paymentRequestId);
         });
     }
+}
+```
+
+### No SDK
+It is possible to integrate the payment flow without using the SDK using Android native [Intent](https://developer.android.com/training/basics/intents/sending). Here is an example on how to create a function to open Maypay providing the `paymentRequestId`. 
+
+```java
+public void openMaypay(@NonNull Context context, String requestId) {
+    if (requestId == null || requestId.isEmpty() ) {
+        throw new IllegalArgumentException("Payment request id cannot be empty");
+    }
+
+    Intent maypayIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("maypay://paymentRequest?id=" + requestId));
+    context.startActivity(maypayIntent);
 }
 ```

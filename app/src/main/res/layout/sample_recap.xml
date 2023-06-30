@@ -241,7 +241,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="€12,99"
+                        android:text="€129,99"
                         android:textStyle="bold"
                         android:textSize="18dp"/>
 
@@ -304,7 +304,7 @@
                 android:textAlignment="textEnd"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:text="Pagato con Maypay" />
+                android:text="Vinto con Maypay" />
         </LinearLayout>
 
         <LinearLayout
