@@ -10,10 +10,11 @@ As an additional option, the procedure for integrating Maypay into your app with
 After successful integration, payment in your app via Maypay will follow a flow similar to that in the example below.
 
 
-![Android app payment flow]()
+![Android app payment flow](https://github.com/maypay-app/maypay-in-app-android-sdk/assets/137157182/81a4117c-1572-4234-b8a9-00909ed997fb)
 
 
 ## Prerequisites
+
 
 :::caution
 The Android minSdk required version is **28**
