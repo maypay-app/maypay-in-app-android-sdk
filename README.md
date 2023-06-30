@@ -53,7 +53,7 @@ repositories {
 
 Then, in your build.gradle add the following dependecy:
 ```gradle
-implementation 'com.maypay.sdk:maypay-android-sdk-test-deploy'
+implementation 'com.maypay.sdk:android'
 ```
 ## Usage
 
